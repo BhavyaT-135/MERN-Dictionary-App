@@ -1,0 +1,53 @@
+.top {
+    width: 100%;
+    height: 50px;
+    background-color: #5d1049;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar{
+    width: 90%;
+    height: 50px;
+    background-color: #5d1049;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* To override the styling of bootstrap components, we need to use !important */
+.searchInput{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    padding: 0 20px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: Kumbh Sans, sans-serif;
+}
+
+/* Styling the placeholder text of the input field */
+.searchInput::placeholder{
+    color: #ffffff;
+}
+
+/* Styling the input field when it is in focus */
+.searchInput:focus{
+    outline: none;
+}
+
+
+.topIcon{
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
