@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
-const wordRoute = require('./routes/words');
+const wordRoute = require('../routes/words');
 const path = require('path');
 
 dotenv.config();
@@ -23,11 +23,13 @@ app.use('/words', wordRoute);
 
 __dirname = path.resolve();
 
+console.log(path.join(__dirname, '/client/build/', 'index.html'))
+
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '/client/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '/client/build/', 'index.html'));
-    })
+    app.use(express.static('public'));
+    // app.get('*', (req, res) => {
+    //     res.sendFile(path.resolve() + '/client/build/', 'index.html');
+    // })
 }
 
 app.listen(process.env.PORT || 8000, () => {

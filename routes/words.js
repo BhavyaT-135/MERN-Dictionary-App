@@ -10,6 +10,8 @@ app.use(express.json());
 
 //POST A WORD
 router.post('/', async (req, res) => {
+    // res.setHeader('Content-Type', 'text/html');
+    // res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     const word = req.body.word_id;
     await axios.get(`https://od-api.oxforddictionaries.com:443/api/v2/entries/en/${word}`, {
         headers: {
@@ -32,6 +34,8 @@ router.post('/', async (req, res) => {
 
 //GET ALL WORDS
 router.get('/', async (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     try {
         const words = await Word.find();
         res.status(200).json(words);
@@ -42,6 +46,8 @@ router.get('/', async (req, res) => {
 
 //GET A WORD
 router.get('/:word_id', async (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
     const words = await Word.find();
     try {
         // Searching the words array for the word_id that matches the word_id in the params
