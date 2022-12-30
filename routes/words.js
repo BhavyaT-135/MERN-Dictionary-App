@@ -46,7 +46,10 @@ router.get('/:word_id', async (req, res) => {
     try {
         // Searching the words array for the word_id that matches the word_id in the params
         const word = await words.find(word => word.word_id.id === req.params.word_id); 
-        res.status(200).json(word);
+        if (word === undefined || !word) {
+            return res.status(404).json({});
+        }
+        return res.status(200).json(word);
     } catch (err) {
         res.status(500).json(err);
         console.log(err);

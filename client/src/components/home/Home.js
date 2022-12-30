@@ -17,7 +17,7 @@ function Home({searchWord, setSearchWord}) {
     }
     getWords();
 
-    if (searchWord !== '') {
+    if (searchWord) {
       const getSearch = async () => {
         await axios.get('/words/' + searchWord).then((res) => {
           if (res.status === 200 && res.data.length !== 0) {
@@ -28,6 +28,7 @@ function Home({searchWord, setSearchWord}) {
           }
         }).catch((err) => {
           console.log(err)
+          setWords([])
         })
       }
       getSearch();
@@ -43,12 +44,12 @@ function Home({searchWord, setSearchWord}) {
   return (
     <div className="home">
       <div className="homeTitle">Words List</div>
-      {
-        words.map((word) => {
+      {Array.isArray(words) &&
+        (words.map((word) => {
         return (
           <Cards word={word} key={word._id} />
         )
-        })}
+        }))}
       <div className="addButtonFixed">
         <i className='addButton fa-solid fa-plus' onClick={() => {
           toggleModal()
