@@ -24,7 +24,7 @@ const MovieModal = (props) => {
         setNewWord('')
         props.toggleModal()
         //Refresh the page
-        window.location.reload()
+        // window.location.reload()
     }
 
   return (
